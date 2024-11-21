@@ -1,0 +1,29 @@
+﻿@model List<DataModel.ArticleCommentModels.CommentDetailListModel>
+
+<div class="container-fluid footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h3>Last Comment</h3>
+                <ul class="list-group lastcomments">
+                    @foreach (var commentDetail in Model.Take(2))
+                    {
+                    foreach (var comment in commentDetail.Comments)
+                        {
+                    <li class="list-group-item">
+                        <p><b>@comment.UserName</b></p>
+                        <p>@comment.Date</p>
+                        <p>@commentDetail.Comment</p>
+                    </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/ArticleJs/Comment.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

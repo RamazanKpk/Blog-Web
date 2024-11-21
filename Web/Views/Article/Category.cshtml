@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DataModel.ArticleModels.ArticleListModel>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<h2 class="text-center">Articles</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-9">
+        @foreach (var item in Model)
+        {
+            <h3>
+                <a href="@Url.Action("Details", "Article", new {Id = item.Id})">
+                    @Html.DisplayFor(modelitem => item.Title)
+                </a>
+            </h3>
+            <div class="row">
+                <div class="col-sm-9">
+                    <span class="float-right label label-success">
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </span>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to Articles", "Index", new { @class = "btn btn-link" })
+</div>

@@ -1,0 +1,6 @@
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\bin\Debug\DataModel.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\bin\Debug\DataModel.pdb
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\obj\Debug\DataModel.csproj.AssemblyReference.cache
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\obj\Debug\DataModel.csproj.CoreCompileInputs.cache
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\obj\Debug\DataModel.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\DataModel\obj\Debug\DataModel.pdb

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Entity.Concrate.User>
+@{Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";}
+@{
+    ViewBag.Title = "User List";
+}
+
+<h2>User List</h2>
+
+<p>
+    @Html.ActionLink("New User", "Create", null, new { @class = "btn btn-success pull-right" }) <br /><br />
+</p>
+<table class="table">
+    <tr>
+        <th class="flex-column">
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId }, new
+           {
+               @class = "btn btn-danger btn-xs",
+               onclick = "return confirm('" + "* " + item.UserName + "* should the user record be deleted?')"
+           })
+            </td>
+        </tr>
+    }
+
+</table>

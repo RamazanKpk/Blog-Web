@@ -1,0 +1,83 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Entity.Concrate.Article>
+
+@{Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";}
+@{
+    ViewBag.Title = "Article";
+}
+
+<h2>Article</h2>
+
+<div class="row mb-3">
+    <div class="col text-right">
+        @Html.ActionLink("Create", "Create", "Article", null, new { @class = "btn btn-primary float-right" })
+    </div>
+</div>
+
+@using (Html.BeginForm("Index", "Article"))
+{
+    <div class="col-md-6" style="margin-top:25px;">
+        <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="Category, Article" name="Search" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" name="Search" value="Filter" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ArticleTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ArticleContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ArticleDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ArticleId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.ArticleId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ArticleId }, new
+           {
+               @class = "btn btn-danger btn-xs",
+               onclick = "return confirm('" + "* " + item.ArticleTitle + "* should the article record be deleted?')"
+           })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pagedList">
+    @Html.PagedListPager(Model, Page => Url.Action("index", new { Page, Search = ViewBag.Search }), PagedListRenderOptions.PageNumbersOnly)
+</div>

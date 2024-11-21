@@ -1,0 +1,50 @@
+﻿@model DataModel.ArticleModels.ArticleDetailListModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>@Html.DisplayFor(model=> model.Categories.FirstOrDefault().Articles.FirstOrDefault(x=> x.Id == Model.Id).Title)</h3>
+
+<div>
+    <div>
+        @foreach (var category in Model.Categories)
+        {
+            foreach (var article in category.Articles)
+            {
+                <div class="col-sm">
+                    <span class="float-left label label-success text-primary">@Html.Raw(Model.User)</span>
+                </div>
+                <div class="col-sm">
+                    <span class="float-right label label-success ">@Html.DisplayFor(model => article.Date)</span>
+                </div>
+                <br />
+                <div class="col-sm">
+                    <content>@Html.Raw(Model.Content)</content>
+                </div>
+            }
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to Articles", "Index",null, new { @class = "btn btn-link" })
+</div>
+<hr />
+@{Html.RenderAction("Create", "Comment", new {ArticleId = Model.Id});}
+<br />
+<section style="margin-top:15px" ;>
+    @foreach (var comment in Model.Comments)
+    {
+        var item = comment.Comments.FirstOrDefault();
+        <div class="card">
+            <h5 class="card-header">@comment.Comments.FirstOrDefault().UserName</h5>
+            <div class="card-body">
+                <p class="card-text">@comment.Comment</p>
+                <span class="float-right label label-success">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </span>
+            </div>
+        </div>
+    }
+</section>
+

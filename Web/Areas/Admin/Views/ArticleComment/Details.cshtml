@@ -1,0 +1,65 @@
+﻿@model Entity.Concrate.ArticleComment
+@{Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";}
+@{
+    ViewBag.Title = "Article Comments Detail";
+}
+
+<h2>Article Comments Detail</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal form-control">
+        <dt class="control-label col-md-2">
+            @Html.DisplayNameFor(model => model.Article.ArticleTitle)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Article.ArticleTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+
+        <dd>
+            @Html.CheckBoxFor(model => model.IsApproved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.CommentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.IpAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommentId }, new {@Class= "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-link" })
+</p>

@@ -1,0 +1,13 @@
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\Entity.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\Entity.pdb
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\obj\Debug\Entity.csproj.AssemblyReference.cache
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\obj\Debug\Entity.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\obj\Debug\Entity.pdb
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\PagedList.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\PagedList.Mvc.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\PagedList.xml
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\PagedList.Mvc.xml
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\obj\Debug\Entity.csproj.Up2Date
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kopuk\source\repos\C#Study\BlogEducation\Entity\bin\Debug\Newtonsoft.Json.xml

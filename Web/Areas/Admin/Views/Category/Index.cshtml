@@ -1,0 +1,68 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Entity.Concrate.Category>
+@{Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";}
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category</h2>
+
+@using (Html.BeginForm("Index", "Category"))
+{
+    <div class="col-md-6" style="margin-top:25px;">
+        <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="Category" name="Search" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" name="Search" value="Filter" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success pull-right" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new
+           {
+               @class = "btn btn-danger btn-xs",
+               onclick = "return confirm('" + "* " + item.CategoryName + "* should his record be expunged?')"
+           })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pagedList">
+    @Html.PagedListPager(Model, Page => Url.Action("index", new { Page }),
+    PagedListRenderOptions.PageNumbersOnly)
+</div>

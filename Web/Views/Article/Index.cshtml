@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DataModel.ArticleModels.ArticleListModel>
+
+@{
+    ViewBag.Title = "Articles";
+    var articles = Model.ToList();
+
+}
+<h2 class="text-center">Articles</h2>
+<hr />
+<div class="container">
+    <div class="row mb-3">
+        <div class="col text-right">
+            @Html.ActionLink("Create", "Create", "Article", null, new { @class = "btn btn-primary float-right" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+
+            @for (int i = 0; i < articles.Count; i += 2)
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>
+                                <a href="@Url.Action("Details", "Article", new { Id = articles[i].Id })">
+                                    @Html.DisplayFor(modelitem => articles[i].Title)
+                                </a>
+                            </h3>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @Html.Raw(Html.DisplayFor(modelItem => articles[i].Summary))
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="float-right label label-success">
+                                        @Html.DisplayFor(modelItem => articles[i].Date)
+                                    </span>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+
+                        @if (i + 1 < articles.Count)
+                        {
+                            <div class="col-sm-6">
+                                <h3>
+                                    <a href="@Url.Action("Details", "Article", new { Id = articles[i + 1].Id })">
+                                        @Html.Raw(Html.DisplayFor(modelitem => articles[i + 1].Title))
+                                    </a>
+                                </h3>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @Html.Raw(Html.DisplayFor(modelItem => articles[i + 1].Summary))
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <span class="float-right label label-success">
+                                            @Html.DisplayFor(modelItem => articles[i + 1].Date)
+                                        </span>
+                                    </div>
+                                </div>
+                                <hr />
+                            </div>
+                        }
+                    </div>
+                }
+        </div>
+    </div>
+</div>

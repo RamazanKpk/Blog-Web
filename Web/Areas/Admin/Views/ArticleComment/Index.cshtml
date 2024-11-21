@@ -1,0 +1,86 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Entity.Concrate.ArticleComment>
+@{Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";}
+@{
+    ViewBag.Title = "Article Comment";
+}
+
+<h2>Article Comment</h2>
+
+@using (Html.BeginForm("Index", "ArticleComment"))
+{
+    <div class="col-md-6" style="margin-top:25px;">
+        <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="User Name, Article Title" name="Search" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" name="Search" value="Filter" class="btn btn-primary" />
+        </div>
+    </div>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Article.ArticleTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().IsApproved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CommentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().IpAddress)
+            </th>
+            <th class="col-md-2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Article.ArticleTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsApproved)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IpAddress)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CommentId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Details", "Details", new { id = item.CommentId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CommentId }, new
+               {
+                   @class = "btn btn-danger btn-xs",
+                   onclick = "return confirm('" + "* " + item.Comment + "* should his record be expunged?')"
+               })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div class="pagedList">
+    @Html.PagedListPager(Model, Page => Url.Action("index", new { Page }),
+    PagedListRenderOptions.PageNumbersOnly)
+</div>

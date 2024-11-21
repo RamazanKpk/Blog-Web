@@ -1,0 +1,93 @@
+﻿@*@{
+    Layout = null;
+}*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/login.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+   
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <input type="hidden" id="formType" name="FormType" value="login" />
+
+        <div class="section">
+            <div class="container">
+                <div class="row full-height justify-content-center">
+                    <div class="col-12 text-center align-self-center py-5">
+                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                            <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                            <label for="reg-log"></label>
+                            <div class="card-3d-wrap mx-auto">
+                                <div class="card-3d-wrapper">
+                                    <div class="card-front">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                @if (TempData["Message"] != null)
+                                                {
+                                                    <div class="alert alert-success" role="alert">
+                                                        @TempData["Message"]
+                                                    </div>
+                                                }
+                                                <h4 class="mb-4 pb-3">Log In</h4>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-style" placeholder="User Name" name="UserName" />
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style" placeholder="Password" name="Password" /><br />
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                <button href="#" class="btn mt-4">submit</button>
+                                                <p class="mb-0 mt-4 text-center">
+                                                    <a href="@Url.Action("ResetPassword", "Home")" class="link">Forgot your password?</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @Html.Hidden("ReturnUrl", Request.QueryString["ReturnUrl"])
+                                    <div class="card-back">
+                                        <div class="center-wrap">
+                                            <div class="section text-center">
+                                                <h4 class="mb-4 pb-3">Sign Up</h4>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-style" placeholder="Your User Name" name="NewUser">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="email" class="form-style" placeholder="Your Email" name="EMail">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style" placeholder="Your Password" name="NewPassword">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                <button href="#" class="btn mt-4" onclick="setSignUpFormType()">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        function setSignUpFormType() {
+            document.getElementById("formType").value = "signup";
+        }
+    </script>
+</body>
+</html>
